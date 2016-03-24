@@ -23,16 +23,17 @@ class Ship {
     var type : Type
     var length : CGFloat
     let size : Int
+    var image : UIImage!
     init(pos:Position,dir:Direction,type:Type){
         self.position = pos
         self.direction = dir
         self.type = type
         switch type{
-        case .Carrier: self.size = 5
-        case .Battlecruiser: self.size = 4
-        case .Cruiser: self.size = 3
-        case .Submarine: self.size = 3
-        case .Destroyer: self.size = 2
+        case .Carrier: self.size = 5;self.image = UIImage(named:"carrier.png")
+        case .Battlecruiser: self.size = 4;self.image = UIImage(named:"battlecruiser.png")
+        case .Cruiser: self.size = 3;self.image = UIImage(named:"cruiser.png")
+        case .Submarine: self.size = 3;self.image = UIImage(named:"submarine.png")
+        case .Destroyer: self.size = 2;self.image = UIImage(named:"destroyer.png")
         }
         self.length = UIScreen.mainScreen().bounds.size.width / CGFloat(Field.fieldSize)    //btnサイズと同じ
     }
