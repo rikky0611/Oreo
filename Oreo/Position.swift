@@ -16,3 +16,11 @@ class Position{
         self.y = y
     }
 }
+
+class Vector:Position{
+    func multiple(i:Int) -> Vector{
+        let x = self.x * i
+        let y = self.y * i
+        return Vector(x: x, y: y)
+    }
+}

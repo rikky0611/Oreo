@@ -9,6 +9,9 @@
 import Foundation
 import UIKit
 
+let fieldSize = 5
+
+
 
 class Field :UIView {
     
@@ -19,7 +22,7 @@ class Field :UIView {
         case attacked_Blank
     }
     
-    static let fieldSize = 5
+    //static let fieldSize = 5
     static var cell_line = Array(count: fieldSize, repeatedValue: Cell.Blank)
     var cell_arr = Array(count: fieldSize, repeatedValue: cell_line)
     
@@ -43,6 +46,18 @@ class Field :UIView {
     
     func miss_at(pos:Position){
         // TODO:水しぶき実装
+    }
+    
+    func reallocate(ships:Ships){
+        // 配置フェーズで使用することのみ想定
+        let cell_line = Array(count: fieldSize, repeatedValue: Cell.Blank)
+        self.cell_arr = Array(count: fieldSize, repeatedValue: cell_line)
+        for ship in ships.shipArray{
+            for i in 0..<ship.size{
+                let shift = ship.direction.vector.multiple(i)
+                self.cell_arr[ship.position.x+shift.x][ship.position.y+shift.y] = Cell.Ship
+            }
+        }
     }
     
 }
