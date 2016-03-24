@@ -11,7 +11,8 @@ import Foundation
 class Ship {
     enum Type{
         case Carrier    //空母 5マス
-        case Cruiser    //巡洋艦 4マス
+        case Battlecruiser  //巡洋戦艦 4マス
+        case Cruiser    //巡洋艦 3マス
         case Submarine  //潜水艦 3マス
         case Destroyer  //駆逐艦 2マス
     }
