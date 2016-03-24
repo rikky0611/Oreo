@@ -9,9 +9,9 @@
 import Foundation
 
 class Direction {
-    var direction : String
-    init(direction:String){
-        self.direction = direction
+    var dirNum : Int
+    init(direction:Int){
+        self.dirNum = direction
     }
 }
 

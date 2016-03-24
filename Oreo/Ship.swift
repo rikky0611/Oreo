@@ -17,11 +17,31 @@ class Ship {
         case Destroyer  //駆逐艦 2マス
     }
     
-    var position : Position
-    var direction  : Direction
-    
-    init(position:Position,direction:Direction){
-        self.position = position
-        self.direction = direction
+    var position : Position //頭の位置
+    var direction : Direction
+    var type : Type
+    let size : Int
+    init(pos:Position,dir:Direction,type:Type){
+        self.position = pos
+        self.direction = dir
+        self.type = type
+        switch type{
+        case .Carrier: self.size = 5
+        case .Battlecruiser: self.size = 4
+        case .Cruiser: self.size = 3
+        case .Submarine: self.size = 3
+        case .Destroyer: self.size = 2
+        }
     }
+    
+    func rotate90degrees(){
+       // TODO:正の向きに90度回転させるメソッド
+        self.direction.dirNum = (self.direction.dirNum+1)%4
+    }
+    
+    
+    func isAbleToPut(){
+    // TODO:置けるか判定するメソッド
+    }
+    
 }
