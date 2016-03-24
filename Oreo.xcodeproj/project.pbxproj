@@ -15,7 +15,6 @@
 		9A5C66B21CA3CAEA00F32644 /* OreoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5C66B11CA3CAEA00F32644 /* OreoTests.swift */; };
 		9A5C66BD1CA3CAEA00F32644 /* OreoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5C66BC1CA3CAEA00F32644 /* OreoUITests.swift */; };
 		9A5C66CE1CA3CB1D00F32644 /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5C66CD1CA3CB1D00F32644 /* Field.swift */; };
-		9A5C66D01CA3CCA200F32644 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5C66CF1CA3CCA200F32644 /* Cell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +49,6 @@
 		9A5C66BC1CA3CAEA00F32644 /* OreoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OreoUITests.swift; sourceTree = "<group>"; };
 		9A5C66BE1CA3CAEA00F32644 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9A5C66CD1CA3CB1D00F32644 /* Field.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
-		9A5C66CF1CA3CCA200F32644 /* Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,7 +132,6 @@
 			isa = PBXGroup;
 			children = (
 				9A5C66CD1CA3CB1D00F32644 /* Field.swift */,
-				9A5C66CF1CA3CCA200F32644 /* Cell.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -290,7 +287,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A5C669F1CA3CAEA00F32644 /* ViewController.swift in Sources */,
-				9A5C66D01CA3CCA200F32644 /* Cell.swift in Sources */,
 				9A5C669D1CA3CAEA00F32644 /* AppDelegate.swift in Sources */,
 				9A5C66CE1CA3CB1D00F32644 /* Field.swift in Sources */,
 			);
@@ -517,6 +513,7 @@
 				9A5C66C31CA3CAEA00F32644 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9A5C66C41CA3CAEA00F32644 /* Build configuration list for PBXNativeTarget "OreoTests" */ = {
 			isa = XCConfigurationList;
@@ -525,6 +522,7 @@
 				9A5C66C61CA3CAEA00F32644 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9A5C66C71CA3CAEA00F32644 /* Build configuration list for PBXNativeTarget "OreoUITests" */ = {
 			isa = XCConfigurationList;
@@ -533,6 +531,7 @@
 				9A5C66C91CA3CAEA00F32644 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
