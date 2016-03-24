@@ -35,7 +35,7 @@ class Ship {
         case .Submarine: self.size = 3;self.image = UIImage(named:"submarine.png")
         case .Destroyer: self.size = 2;self.image = UIImage(named:"destroyer.png")
         }
-        self.length = UIScreen.mainScreen().bounds.size.width / CGFloat(Field.fieldSize)    //btnサイズと同じ
+        self.length = UIScreen.mainScreen().bounds.size.width / CGFloat(fieldSize)    //btnサイズと同じ
     }
     
     func rotate90degrees(){
@@ -44,8 +44,24 @@ class Ship {
     }
     
     
-    func isAbleToPut(){
-    // TODO:置けるか判定するメソッド
+    func isAbleToPut(pos:Position,dir:Direction,size:Int,field:Field)->Bool{
+        // 盤外に出ていないか確認
+        
+        
+        return true
     }
     
+}
+
+class Ships {
+    var shipArray: [Ship]
+    init(){
+        shipArray=[]
+    }
+    
+    func addShips(ship:Ship, field:Field){
+        if ship.isAbleToPut(ship.position, dir: ship.direction, size: ship.size, field: field){
+            shipArray.append(ship)
+        }
+    }
 }
