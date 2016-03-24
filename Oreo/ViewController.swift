@@ -32,15 +32,15 @@ class ViewController: UIViewController {
         
         let btnSize = boardSize.width/CGFloat(fieldSize)
         
-        for var y = 0; y<fieldSize; y++ {
-            for var x = 0;x<fieldSize;x++ {
+        for y in 0 ..< fieldSize {
+            for x in 0 ..< fieldSize {
                 let btn = UIButton(frame: CGRectMake(btnSize * CGFloat(x),btnSize * CGFloat(y),btnSize, btnSize))
                 btn.layer.borderWidth = 2.0
                 btn.layer.borderColor = UIColor.grayColor().CGColor
                 boardView.addSubview(btn)
                 
                 btn.tag = y*fieldSize + x
-                btn.addTarget(self, action:Selector("onBtnClick:") , forControlEvents: .TouchUpInside)
+                btn.addTarget(self, action:#selector(ViewController.onBtnClick(_:)) , forControlEvents: .TouchUpInside)
                 
             }
         }
