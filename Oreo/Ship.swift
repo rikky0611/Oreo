@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class Ship {
     enum Type{
@@ -20,6 +21,7 @@ class Ship {
     var position : Position //頭の位置
     var direction : Direction
     var type : Type
+    var length : CGFloat
     let size : Int
     init(pos:Position,dir:Direction,type:Type){
         self.position = pos
@@ -32,6 +34,7 @@ class Ship {
         case .Submarine: self.size = 3
         case .Destroyer: self.size = 2
         }
+        self.length = UIScreen.mainScreen().bounds.size.width / CGFloat(Field.fieldSize)    //btnサイズと同じ
     }
     
     func rotate90degrees(){
