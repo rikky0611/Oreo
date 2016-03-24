@@ -23,6 +23,8 @@ class ViewController: UIViewController, MCBrowserViewControllerDelegate, MCSessi
     var peerID:  MCPeerID!
     let boardView = Field()
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -43,6 +45,23 @@ class ViewController: UIViewController, MCBrowserViewControllerDelegate, MCSessi
         
         // tell the assistant to start advertising our fabulous chat
         self.assistant.start()
+        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        if self.session.connectedPeers.count == 0 {
+            self.presentViewController(self.browser, animated: true, completion: nil)
+        }
+        
+    }
+    
+    func browserViewControllerDidFinish(
+        browserViewController: MCBrowserViewController)  {
+        // Called when the browser view controller is dismissed (ie the Done
+        // button was tapped)
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func initialize(){
@@ -71,6 +90,7 @@ class ViewController: UIViewController, MCBrowserViewControllerDelegate, MCSessi
     }
     
     func onBtnClick(btn: UIButton){
+        
         let x = btn.tag % fieldSize
         let y = btn.tag / fieldSize
         print("x:\(x),y:\(y)")
@@ -78,6 +98,15 @@ class ViewController: UIViewController, MCBrowserViewControllerDelegate, MCSessi
         boardView.burn_at(pos){(status) in
             if status == Field.Cell.Blank {
                 btn.backgroundColor = UIColor.blackColor()
+                let msg = "test".dataUsingEncoding(NSUTF8StringEncoding,
+                                                   allowLossyConversion: false)
+                
+                do{
+                    try self.session.sendData(msg!, toPeers: self.session.connectedPeers,
+                                              withMode: MCSessionSendDataMode.Unreliable)
+                }catch{
+                    //えらー
+                }
             }else if status == Field.Cell.Ship{
                 btn.backgroundColor = UIColor.yellowColor()
             }else{
@@ -104,14 +133,6 @@ class ViewController: UIViewController, MCBrowserViewControllerDelegate, MCSessi
         // Dispose of any resources that can be recreated.
     }
     
-    func browserViewControllerDidFinish(
-        browserViewController: MCBrowserViewController)  {
-        // Called when the browser view controller is dismissed (ie the Done
-        // button was tapped)
-        
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
     func browserViewControllerWasCancelled(
         browserViewController: MCBrowserViewController)  {
         // Called when the browser view controller is cancelled
@@ -126,7 +147,7 @@ class ViewController: UIViewController, MCBrowserViewControllerDelegate, MCSessi
         // This needs to run on the main queue
         dispatch_async(dispatch_get_main_queue()) {
             //let msg = NSString(data: data, encoding: NSUTF8StringEncoding)
-            //self.updateChat(String(msg), fromPeer: peerID)
+            self.setAlert("攻撃を受けました。")
         }
     }
     
