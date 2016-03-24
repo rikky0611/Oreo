@@ -14,7 +14,6 @@ class ViewController: UIViewController, MCBrowserViewControllerDelegate, MCSessi
     let screenWidth = UIScreen.mainScreen().bounds.size.width
     let screenHeight = UIScreen.mainScreen().bounds.size.height
     let fieldSize = Field.fieldSize
-    let boardView = UIView()
 
     // MultipeerConnectivity Settings
     let serviceType = "mikanlabsoreo" // unique service name
@@ -22,6 +21,7 @@ class ViewController: UIViewController, MCBrowserViewControllerDelegate, MCSessi
     var assistant: MCAdvertiserAssistant!
     var session: MCSession!
     var peerID:  MCPeerID!
+    let boardView = Field()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,8 +74,31 @@ class ViewController: UIViewController, MCBrowserViewControllerDelegate, MCSessi
         let x = btn.tag % fieldSize
         let y = btn.tag / fieldSize
         print("x:\(x),y:\(y)")
+        let pos = Position(x: x,y: y)
+        boardView.burn_at(pos){(status) in
+            if status == Field.Cell.Blank {
+                btn.backgroundColor = UIColor.blackColor()
+            }else if status == Field.Cell.Ship{
+                btn.backgroundColor = UIColor.yellowColor()
+            }else{
+                self.setAlert("そこには大砲を打てません")
+            }
+        }
     }
     
+    func setAlert(message:String){
+        let alert:UIAlertController = UIAlertController(title: "警告", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {
+            action in
+            // ボタンが押された時の処理
+            print ("pushed")
+        }))
+        self.presentViewController(alert, animated: true, completion: {
+            // 表示完了時の処理
+            print("finished")
+        })
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

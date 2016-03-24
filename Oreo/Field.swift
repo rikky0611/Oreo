@@ -7,17 +7,10 @@
 //
 
 import Foundation
+import UIKit
 
-class Position{
-    var x:Int
-    var y:Int
-    init(x:Int,y:Int){
-        self.x = x
-        self.y = y
-    }
-}
 
-class Field {
+class Field :UIView {
     
     enum Cell {
         case Ship
@@ -30,18 +23,21 @@ class Field {
     static var cell_line = Array(count: fieldSize, repeatedValue: Cell.Blank)
     var cell_arr = Array(count: fieldSize, repeatedValue: cell_line)
     
-    func burn_at(pos:Position){
+    func burn_at(pos:Position, completion:(Cell)->Void){
+        print(cell_arr[pos.x][pos.y])
         switch cell_arr[pos.x][pos.y]{
-        case Cell.Blank:
-            cell_arr[pos.x][pos.y] = Cell.attacked_Blank
-        case Cell.Ship:
-            cell_arr[pos.x][pos.y] = Cell.attacked_Ship
-        case Cell.attacked_Blank:
+        case .Blank:
+            cell_arr[pos.x][pos.y] = .attacked_Blank
+            completion(.Blank)
+        case .Ship:
+            cell_arr[pos.x][pos.y] = .attacked_Ship
+            completion(.Ship)
+        case .attacked_Blank:
             // TODO: 処理書く
-            break
-        case Cell.attacked_Ship:
+            completion(.attacked_Blank)
+        case .attacked_Ship:
             // TODO: 処理書く
-            break
+            completion(.attacked_Ship)
         }
     }
     
