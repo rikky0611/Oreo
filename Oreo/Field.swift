@@ -11,7 +11,12 @@ import UIKit
 
 let fieldSize = 5
 
-
+enum Cell {
+    case Ship
+    case Blank
+    case attacked_Ship
+    case attacked_Blank
+}
 
 class Field :UIView {
     
@@ -58,6 +63,14 @@ class Field :UIView {
                 self.cell_arr[ship.position.x+shift.x][ship.position.y+shift.y] = Cell.Ship
             }
         }
+    }
+    
+    func isInField(pos:Position) -> Bool{
+        return pos.x >= 0 && pos.x < fieldSize && pos.y >= 0 && pos.y < fieldSize
+    }
+    
+    func isBlank(pos:Position) -> Bool{
+        return self.cell_arr[pos.x][pos.y]==Cell.Blank
     }
     
 }

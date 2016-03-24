@@ -46,10 +46,17 @@ class Ship {
     
     
     func isAbleToPut(pos:Position,dir:Direction,size:Int,field:Field)->Bool{
+        var isAbleToPut:Bool
         // 盤外に出ていないか確認
-        
-        
-        return true
+        let shift = self.direction.vector.multiple(self.size-1)
+        let shipTail = Position(x: pos.x + shift.x, y: pos.y + shift.y)
+        isAbleToPut = field.isInField(pos) && field.isInField(shipTail)
+        // 他の船と被っていないか確認
+        for i in 0..<self.size{
+            let currPos = pos.shift(x:i, y:i)
+            isAbleToPut = isAbleToPut && field.isBlank(currPos)
+        }
+        return isAbleToPut
     }
     
 }

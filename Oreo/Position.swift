@@ -15,6 +15,10 @@ class Position{
         self.x = x
         self.y = y
     }
+    
+    func shift(x x:Int, y:Int) -> Position{
+        return Position(x:self.x+x, y:self.y+y)
+    }
 }
 
 class Vector:Position{
