@@ -1,0 +1,508 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9A5C669D1CA3CAEA00F32644 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5C669C1CA3CAEA00F32644 /* AppDelegate.swift */; };
+		9A5C669F1CA3CAEA00F32644 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5C669E1CA3CAEA00F32644 /* ViewController.swift */; };
+		9A5C66A21CA3CAEA00F32644 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A5C66A01CA3CAEA00F32644 /* Main.storyboard */; };
+		9A5C66A41CA3CAEA00F32644 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A5C66A31CA3CAEA00F32644 /* Assets.xcassets */; };
+		9A5C66A71CA3CAEA00F32644 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A5C66A51CA3CAEA00F32644 /* LaunchScreen.storyboard */; };
+		9A5C66B21CA3CAEA00F32644 /* OreoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5C66B11CA3CAEA00F32644 /* OreoTests.swift */; };
+		9A5C66BD1CA3CAEA00F32644 /* OreoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5C66BC1CA3CAEA00F32644 /* OreoUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9A5C66AE1CA3CAEA00F32644 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A5C66911CA3CAEA00F32644 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9A5C66981CA3CAEA00F32644;
+			remoteInfo = Oreo;
+		};
+		9A5C66B91CA3CAEA00F32644 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A5C66911CA3CAEA00F32644 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9A5C66981CA3CAEA00F32644;
+			remoteInfo = Oreo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9A5C66991CA3CAEA00F32644 /* Oreo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Oreo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A5C669C1CA3CAEA00F32644 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		9A5C669E1CA3CAEA00F32644 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9A5C66A11CA3CAEA00F32644 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9A5C66A31CA3CAEA00F32644 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9A5C66A61CA3CAEA00F32644 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9A5C66A81CA3CAEA00F32644 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9A5C66AD1CA3CAEA00F32644 /* OreoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OreoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A5C66B11CA3CAEA00F32644 /* OreoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OreoTests.swift; sourceTree = "<group>"; };
+		9A5C66B31CA3CAEA00F32644 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9A5C66B81CA3CAEA00F32644 /* OreoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OreoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A5C66BC1CA3CAEA00F32644 /* OreoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OreoUITests.swift; sourceTree = "<group>"; };
+		9A5C66BE1CA3CAEA00F32644 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9A5C66961CA3CAEA00F32644 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A5C66AA1CA3CAEA00F32644 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A5C66B51CA3CAEA00F32644 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9A5C66901CA3CAEA00F32644 = {
+			isa = PBXGroup;
+			children = (
+				9A5C669B1CA3CAEA00F32644 /* Oreo */,
+				9A5C66B01CA3CAEA00F32644 /* OreoTests */,
+				9A5C66BB1CA3CAEA00F32644 /* OreoUITests */,
+				9A5C669A1CA3CAEA00F32644 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9A5C669A1CA3CAEA00F32644 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A5C66991CA3CAEA00F32644 /* Oreo.app */,
+				9A5C66AD1CA3CAEA00F32644 /* OreoTests.xctest */,
+				9A5C66B81CA3CAEA00F32644 /* OreoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A5C669B1CA3CAEA00F32644 /* Oreo */ = {
+			isa = PBXGroup;
+			children = (
+				9A5C669C1CA3CAEA00F32644 /* AppDelegate.swift */,
+				9A5C669E1CA3CAEA00F32644 /* ViewController.swift */,
+				9A5C66A01CA3CAEA00F32644 /* Main.storyboard */,
+				9A5C66A31CA3CAEA00F32644 /* Assets.xcassets */,
+				9A5C66A51CA3CAEA00F32644 /* LaunchScreen.storyboard */,
+				9A5C66A81CA3CAEA00F32644 /* Info.plist */,
+			);
+			path = Oreo;
+			sourceTree = "<group>";
+		};
+		9A5C66B01CA3CAEA00F32644 /* OreoTests */ = {
+			isa = PBXGroup;
+			children = (
+				9A5C66B11CA3CAEA00F32644 /* OreoTests.swift */,
+				9A5C66B31CA3CAEA00F32644 /* Info.plist */,
+			);
+			path = OreoTests;
+			sourceTree = "<group>";
+		};
+		9A5C66BB1CA3CAEA00F32644 /* OreoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				9A5C66BC1CA3CAEA00F32644 /* OreoUITests.swift */,
+				9A5C66BE1CA3CAEA00F32644 /* Info.plist */,
+			);
+			path = OreoUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9A5C66981CA3CAEA00F32644 /* Oreo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9A5C66C11CA3CAEA00F32644 /* Build configuration list for PBXNativeTarget "Oreo" */;
+			buildPhases = (
+				9A5C66951CA3CAEA00F32644 /* Sources */,
+				9A5C66961CA3CAEA00F32644 /* Frameworks */,
+				9A5C66971CA3CAEA00F32644 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Oreo;
+			productName = Oreo;
+			productReference = 9A5C66991CA3CAEA00F32644 /* Oreo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9A5C66AC1CA3CAEA00F32644 /* OreoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9A5C66C41CA3CAEA00F32644 /* Build configuration list for PBXNativeTarget "OreoTests" */;
+			buildPhases = (
+				9A5C66A91CA3CAEA00F32644 /* Sources */,
+				9A5C66AA1CA3CAEA00F32644 /* Frameworks */,
+				9A5C66AB1CA3CAEA00F32644 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9A5C66AF1CA3CAEA00F32644 /* PBXTargetDependency */,
+			);
+			name = OreoTests;
+			productName = OreoTests;
+			productReference = 9A5C66AD1CA3CAEA00F32644 /* OreoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		9A5C66B71CA3CAEA00F32644 /* OreoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9A5C66C71CA3CAEA00F32644 /* Build configuration list for PBXNativeTarget "OreoUITests" */;
+			buildPhases = (
+				9A5C66B41CA3CAEA00F32644 /* Sources */,
+				9A5C66B51CA3CAEA00F32644 /* Frameworks */,
+				9A5C66B61CA3CAEA00F32644 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9A5C66BA1CA3CAEA00F32644 /* PBXTargetDependency */,
+			);
+			name = OreoUITests;
+			productName = OreoUITests;
+			productReference = 9A5C66B81CA3CAEA00F32644 /* OreoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9A5C66911CA3CAEA00F32644 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Mikan Laboratories";
+				TargetAttributes = {
+					9A5C66981CA3CAEA00F32644 = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = W5GEL5NL4Y;
+					};
+					9A5C66AC1CA3CAEA00F32644 = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = W5GEL5NL4Y;
+						TestTargetID = 9A5C66981CA3CAEA00F32644;
+					};
+					9A5C66B71CA3CAEA00F32644 = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = W5GEL5NL4Y;
+						TestTargetID = 9A5C66981CA3CAEA00F32644;
+					};
+				};
+			};
+			buildConfigurationList = 9A5C66941CA3CAEA00F32644 /* Build configuration list for PBXProject "Oreo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9A5C66901CA3CAEA00F32644;
+			productRefGroup = 9A5C669A1CA3CAEA00F32644 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9A5C66981CA3CAEA00F32644 /* Oreo */,
+				9A5C66AC1CA3CAEA00F32644 /* OreoTests */,
+				9A5C66B71CA3CAEA00F32644 /* OreoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9A5C66971CA3CAEA00F32644 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A5C66A71CA3CAEA00F32644 /* LaunchScreen.storyboard in Resources */,
+				9A5C66A41CA3CAEA00F32644 /* Assets.xcassets in Resources */,
+				9A5C66A21CA3CAEA00F32644 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A5C66AB1CA3CAEA00F32644 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A5C66B61CA3CAEA00F32644 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9A5C66951CA3CAEA00F32644 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A5C669F1CA3CAEA00F32644 /* ViewController.swift in Sources */,
+				9A5C669D1CA3CAEA00F32644 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A5C66A91CA3CAEA00F32644 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A5C66B21CA3CAEA00F32644 /* OreoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A5C66B41CA3CAEA00F32644 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A5C66BD1CA3CAEA00F32644 /* OreoUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9A5C66AF1CA3CAEA00F32644 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9A5C66981CA3CAEA00F32644 /* Oreo */;
+			targetProxy = 9A5C66AE1CA3CAEA00F32644 /* PBXContainerItemProxy */;
+		};
+		9A5C66BA1CA3CAEA00F32644 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9A5C66981CA3CAEA00F32644 /* Oreo */;
+			targetProxy = 9A5C66B91CA3CAEA00F32644 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9A5C66A01CA3CAEA00F32644 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9A5C66A11CA3CAEA00F32644 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		9A5C66A51CA3CAEA00F32644 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9A5C66A61CA3CAEA00F32644 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9A5C66BF1CA3CAEA00F32644 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		9A5C66C01CA3CAEA00F32644 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9A5C66C21CA3CAEA00F32644 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Oreo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mikan-labs.Oreo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		9A5C66C31CA3CAEA00F32644 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Oreo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mikan-labs.Oreo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		9A5C66C51CA3CAEA00F32644 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = OreoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mikan-labs.OreoTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Oreo.app/Oreo";
+			};
+			name = Debug;
+		};
+		9A5C66C61CA3CAEA00F32644 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = OreoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mikan-labs.OreoTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Oreo.app/Oreo";
+			};
+			name = Release;
+		};
+		9A5C66C81CA3CAEA00F32644 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = OreoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mikan-labs.OreoUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Oreo;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		9A5C66C91CA3CAEA00F32644 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = OreoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mikan-labs.OreoUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Oreo;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9A5C66941CA3CAEA00F32644 /* Build configuration list for PBXProject "Oreo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A5C66BF1CA3CAEA00F32644 /* Debug */,
+				9A5C66C01CA3CAEA00F32644 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9A5C66C11CA3CAEA00F32644 /* Build configuration list for PBXNativeTarget "Oreo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A5C66C21CA3CAEA00F32644 /* Debug */,
+				9A5C66C31CA3CAEA00F32644 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		9A5C66C41CA3CAEA00F32644 /* Build configuration list for PBXNativeTarget "OreoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A5C66C51CA3CAEA00F32644 /* Debug */,
+				9A5C66C61CA3CAEA00F32644 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		9A5C66C71CA3CAEA00F32644 /* Build configuration list for PBXNativeTarget "OreoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A5C66C81CA3CAEA00F32644 /* Debug */,
+				9A5C66C91CA3CAEA00F32644 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9A5C66911CA3CAEA00F32644 /* Project object */;
+}
