@@ -23,6 +23,7 @@
 		9A5C66E21CA42DAE00F32644 /* cruiser.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A5C66DF1CA42DAE00F32644 /* cruiser.png */; };
 		9A5C66E31CA42DAE00F32644 /* destroyer.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A5C66E01CA42DAE00F32644 /* destroyer.png */; };
 		9A5C66E41CA42DAE00F32644 /* submarine.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A5C66E11CA42DAE00F32644 /* submarine.png */; };
+		9A5C66E81CA4387B00F32644 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5C66E71CA4387B00F32644 /* UIImageExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		9A5C66DF1CA42DAE00F32644 /* cruiser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cruiser.png; sourceTree = "<group>"; };
 		9A5C66E01CA42DAE00F32644 /* destroyer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = destroyer.png; sourceTree = "<group>"; };
 		9A5C66E11CA42DAE00F32644 /* submarine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = submarine.png; sourceTree = "<group>"; };
+		9A5C66E71CA4387B00F32644 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				9A5C66DE1CA42A8200F32644 /* Images */,
+				9A5C66E71CA4387B00F32644 /* UIImageExtension.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 			files = (
 				9A5C669F1CA3CAEA00F32644 /* ViewController.swift in Sources */,
 				9A5C66D41CA4033900F32644 /* Ship.swift in Sources */,
+				9A5C66E81CA4387B00F32644 /* UIImageExtension.swift in Sources */,
 				9A5C669D1CA3CAEA00F32644 /* AppDelegate.swift in Sources */,
 				9A5C66D61CA4058000F32644 /* Position.swift in Sources */,
 				9A5C66CE1CA3CB1D00F32644 /* Field.swift in Sources */,
