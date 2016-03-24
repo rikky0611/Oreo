@@ -13,7 +13,7 @@ class ViewController: UIViewController, MCBrowserViewControllerDelegate, MCSessi
     
     let screenWidth = UIScreen.mainScreen().bounds.size.width
     let screenHeight = UIScreen.mainScreen().bounds.size.height
-    let fieldSize = Field.fieldSize
+    //let fieldSize = Field.fieldSize
 
     // MultipeerConnectivity Settings
     let serviceType = "mikanlabsoreo" // unique service name
