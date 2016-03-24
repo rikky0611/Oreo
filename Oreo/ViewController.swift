@@ -17,7 +17,7 @@ class ViewController: UIViewController, MCBrowserViewControllerDelegate, MCSessi
     let boardView = UIView()
 
     // MultipeerConnectivity Settings
-    let serviceType = "mikan-labs.oreo" // unique service name
+    let serviceType = "mikanlabsoreo" // unique service name
     var browser: MCBrowserViewController!
     var assistant: MCAdvertiserAssistant!
     var session: MCSession!
