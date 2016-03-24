@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class ShipView : UIView {
-    let btnSize = UIScreen.mainScreen().bounds.size.width / CGFloat(Field.fieldSize)
+    let btnSize = UIScreen.mainScreen().bounds.size.width / CGFloat(fieldSize)
     var view : UIView!
     override init(frame: CGRect) {
         super.init(frame: frame)
