@@ -8,6 +8,15 @@
 
 import Foundation
 
+class Position{
+    var x:Int
+    var y:Int
+    init(x:Int,y:Int){
+        self.x = x
+        self.y = y
+    }
+}
+
 class Field {
     
     enum Cell {
@@ -21,12 +30,12 @@ class Field {
     static var cell_line = Array(count: fieldSize, repeatedValue: Cell.Blank)
     var cell_arr = Array(count: fieldSize, repeatedValue: cell_line)
     
-    func burn_at(x x:Int,y:Int){
-        switch cell_arr[x][y]{
+    func burn_at(pos:Position){
+        switch cell_arr[pos.x][pos.y]{
         case Cell.Blank:
-            cell_arr[x][y] = Cell.attacked_Blank
+            cell_arr[pos.x][pos.y] = Cell.attacked_Blank
         case Cell.Ship:
-            cell_arr[x][y] = Cell.attacked_Ship
+            cell_arr[pos.x][pos.y] = Cell.attacked_Ship
         case Cell.attacked_Blank:
             // TODO: 処理書く
             break
@@ -36,8 +45,23 @@ class Field {
         }
     }
     
-    func miss_at(x x:Int,y:Int){
+    func miss_at(pos:Position){
         // TODO:水しぶき実装
     }
     
+}
+
+class OwnField :Field{
+    var selected_cell = Position(x: -1, y: -1)
+    
+    func attack_at(pos:Position){
+        
+    }
+}
+
+class EnemyField :Field{
+    
+    func attacked_at(pos:Position){
+        
+    }
 }

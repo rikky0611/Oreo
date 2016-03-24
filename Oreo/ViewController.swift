@@ -64,7 +64,7 @@ class ViewController: UIViewController, MCBrowserViewControllerDelegate, MCSessi
                 boardView.addSubview(btn)
                 
                 btn.tag = y*fieldSize + x
-                btn.addTarget(self, action:#selector(ViewController.onBtnClick(_:)) , forControlEvents: .TouchUpInside)
+                btn.addTarget(self, action:"onBtnClick:" , forControlEvents: .TouchUpInside)
                 
             }
         }
