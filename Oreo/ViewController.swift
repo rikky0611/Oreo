@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     let screenWidth = UIScreen.mainScreen().bounds.size.width
     let screenHeight = UIScreen.mainScreen().bounds.size.height
     let fieldSize = Field.fieldSize
-    let boardView = UIView()
+    let boardView = Field()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +50,10 @@ class ViewController: UIViewController {
         let x = btn.tag % fieldSize
         let y = btn.tag / fieldSize
         print("x:\(x),y:\(y)")
+        let pos = Position(x: x,y: y)
+        boardView.burn_at(pos){() in
+            btn.backgroundColor = UIColor.blackColor()
+        }
     }
 
 

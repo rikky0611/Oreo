@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class Position{
     var x:Int
@@ -17,7 +18,7 @@ class Position{
     }
 }
 
-class Field {
+class Field :UIView {
     
     enum Cell {
         case Ship
@@ -30,7 +31,7 @@ class Field {
     static var cell_line = Array(count: fieldSize, repeatedValue: Cell.Blank)
     var cell_arr = Array(count: fieldSize, repeatedValue: cell_line)
     
-    func burn_at(pos:Position){
+    func burn_at(pos:Position, completion:()->Void){
         switch cell_arr[pos.x][pos.y]{
         case Cell.Blank:
             cell_arr[pos.x][pos.y] = Cell.attacked_Blank
@@ -43,6 +44,8 @@ class Field {
             // TODO: 処理書く
             break
         }
+        completion()
+        
     }
     
     func miss_at(pos:Position){
