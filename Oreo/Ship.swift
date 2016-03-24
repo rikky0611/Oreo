@@ -16,4 +16,12 @@ class Ship {
         case Submarine  //潜水艦 3マス
         case Destroyer  //駆逐艦 2マス
     }
+    
+    var position : Position
+    var direction  : Direction
+    
+    init(position:Position,direction:Direction){
+        self.position = position
+        self.direction = direction
+    }
 }
