@@ -19,13 +19,13 @@
 		9A5C66D41CA4033900F32644 /* Ship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5C66D31CA4033900F32644 /* Ship.swift */; };
 		9A5C66D61CA4058000F32644 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5C66D51CA4058000F32644 /* Position.swift */; };
 		9A5C66D81CA4059A00F32644 /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5C66D71CA4059A00F32644 /* Direction.swift */; };
-		9A5C66DB1CA42A6900F32644 /* battlecruiser.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A5C66D91CA42A6900F32644 /* battlecruiser.png */; };
-		9A5C66DC1CA42A6900F32644 /* carrier.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A5C66DA1CA42A6900F32644 /* carrier.png */; };
-		9A5C66E21CA42DAE00F32644 /* cruiser.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A5C66DF1CA42DAE00F32644 /* cruiser.png */; };
-		9A5C66E31CA42DAE00F32644 /* destroyer.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A5C66E01CA42DAE00F32644 /* destroyer.png */; };
-		9A5C66E41CA42DAE00F32644 /* submarine.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A5C66E11CA42DAE00F32644 /* submarine.png */; };
 		9A5C66E81CA4387B00F32644 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5C66E71CA4387B00F32644 /* UIImageExtension.swift */; };
 		9A5C66EA1CA4431C00F32644 /* ShipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5C66E91CA4431C00F32644 /* ShipView.swift */; };
+		9A5C66F01CA4542500F32644 /* battlecruiser.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A5C66EB1CA4542500F32644 /* battlecruiser.png */; };
+		9A5C66F11CA4542500F32644 /* carrier.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A5C66EC1CA4542500F32644 /* carrier.png */; };
+		9A5C66F21CA4542500F32644 /* cruiser.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A5C66ED1CA4542500F32644 /* cruiser.png */; };
+		9A5C66F31CA4542500F32644 /* destroyer.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A5C66EE1CA4542500F32644 /* destroyer.png */; };
+		9A5C66F41CA4542500F32644 /* submarine.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A5C66EF1CA4542500F32644 /* submarine.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,13 +64,13 @@
 		9A5C66D31CA4033900F32644 /* Ship.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ship.swift; sourceTree = "<group>"; };
 		9A5C66D51CA4058000F32644 /* Position.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
 		9A5C66D71CA4059A00F32644 /* Direction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
-		9A5C66D91CA42A6900F32644 /* battlecruiser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = battlecruiser.png; sourceTree = "<group>"; };
-		9A5C66DA1CA42A6900F32644 /* carrier.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = carrier.png; sourceTree = "<group>"; };
-		9A5C66DF1CA42DAE00F32644 /* cruiser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cruiser.png; sourceTree = "<group>"; };
-		9A5C66E01CA42DAE00F32644 /* destroyer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = destroyer.png; sourceTree = "<group>"; };
-		9A5C66E11CA42DAE00F32644 /* submarine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = submarine.png; sourceTree = "<group>"; };
 		9A5C66E71CA4387B00F32644 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		9A5C66E91CA4431C00F32644 /* ShipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShipView.swift; sourceTree = "<group>"; };
+		9A5C66EB1CA4542500F32644 /* battlecruiser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = battlecruiser.png; sourceTree = "<group>"; };
+		9A5C66EC1CA4542500F32644 /* carrier.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = carrier.png; sourceTree = "<group>"; };
+		9A5C66ED1CA4542500F32644 /* cruiser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cruiser.png; sourceTree = "<group>"; };
+		9A5C66EE1CA4542500F32644 /* destroyer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = destroyer.png; sourceTree = "<group>"; };
+		9A5C66EF1CA4542500F32644 /* submarine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = submarine.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,11 +193,11 @@
 		9A5C66DE1CA42A8200F32644 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				9A5C66DF1CA42DAE00F32644 /* cruiser.png */,
-				9A5C66E01CA42DAE00F32644 /* destroyer.png */,
-				9A5C66E11CA42DAE00F32644 /* submarine.png */,
-				9A5C66D91CA42A6900F32644 /* battlecruiser.png */,
-				9A5C66DA1CA42A6900F32644 /* carrier.png */,
+				9A5C66EB1CA4542500F32644 /* battlecruiser.png */,
+				9A5C66EC1CA4542500F32644 /* carrier.png */,
+				9A5C66ED1CA4542500F32644 /* cruiser.png */,
+				9A5C66EE1CA4542500F32644 /* destroyer.png */,
+				9A5C66EF1CA4542500F32644 /* submarine.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -310,13 +310,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A5C66A71CA3CAEA00F32644 /* LaunchScreen.storyboard in Resources */,
-				9A5C66DB1CA42A6900F32644 /* battlecruiser.png in Resources */,
-				9A5C66E31CA42DAE00F32644 /* destroyer.png in Resources */,
-				9A5C66DC1CA42A6900F32644 /* carrier.png in Resources */,
+				9A5C66F01CA4542500F32644 /* battlecruiser.png in Resources */,
+				9A5C66F31CA4542500F32644 /* destroyer.png in Resources */,
+				9A5C66F11CA4542500F32644 /* carrier.png in Resources */,
 				9A5C66A41CA3CAEA00F32644 /* Assets.xcassets in Resources */,
 				9A5C66A21CA3CAEA00F32644 /* Main.storyboard in Resources */,
-				9A5C66E41CA42DAE00F32644 /* submarine.png in Resources */,
-				9A5C66E21CA42DAE00F32644 /* cruiser.png in Resources */,
+				9A5C66F41CA4542500F32644 /* submarine.png in Resources */,
+				9A5C66F21CA4542500F32644 /* cruiser.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

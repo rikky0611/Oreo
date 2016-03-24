@@ -10,14 +10,19 @@ import Foundation
 import UIKit
 
 class ShipView : UIView {
+    let btnSize = UIScreen.mainScreen().bounds.size.width / CGFloat(Field.fieldSize)
     var view : UIView!
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
     
     func addShip(ship:Ship){
-        let image = ship.image
-        
+        let image = ship.image.resize(ratio: btnSize/ship.image.size.height)
+        let x:CGFloat = CGFloat(ship.position.x) * btnSize
+        let y:CGFloat = CGFloat(ship.position.y) * btnSize
+        let imageView = UIImageView(frame: CGRectMake(x,y,image.size.width,image.size.height))
+        imageView.image = image
+        self.addSubview(imageView)
     }
 
     required init?(coder aDecoder: NSCoder) {
