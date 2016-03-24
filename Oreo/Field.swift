@@ -9,14 +9,6 @@
 import Foundation
 import UIKit
 
-class Position{
-    var x:Int
-    var y:Int
-    init(x:Int,y:Int){
-        self.x = x
-        self.y = y
-    }
-}
 
 class Field :UIView {
     
