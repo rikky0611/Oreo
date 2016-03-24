@@ -36,5 +36,8 @@ class Field {
         }
     }
     
+    func miss_at(x x:Int,y:Int){
+        // TODO:水しぶき実装
+    }
     
 }
