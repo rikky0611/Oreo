@@ -22,6 +22,7 @@ class ViewController: UIViewController, MCBrowserViewControllerDelegate, MCSessi
     var session: MCSession!
     var peerID:  MCPeerID!
     let ownFieldView = FieldView()
+    let enemyFieldView = FieldView()
     
 
     //MARK:テスト用
@@ -32,9 +33,15 @@ class ViewController: UIViewController, MCBrowserViewControllerDelegate, MCSessi
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        ownFieldView.initialize()
+        ownFieldView.initialize(FieldView.Side.Own)
         ownFieldView.delegate = self
+        ownFieldView.bottom = self.view.bottom
         self.view.addSubview(ownFieldView)
+        
+        enemyFieldView.initialize(FieldView.Side.Enemy)
+        enemyFieldView.delegate = self
+        enemyFieldView.top = self.view.top
+        self.view.addSubview(enemyFieldView)
         
         self.peerID = MCPeerID(displayName: UIDevice.currentDevice().name)
         self.session = MCSession(peer: peerID)
@@ -68,7 +75,6 @@ class ViewController: UIViewController, MCBrowserViewControllerDelegate, MCSessi
             // error handling
         }
             
-        
         return true
     }
     
