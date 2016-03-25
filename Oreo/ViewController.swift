@@ -21,7 +21,7 @@ class ViewController: UIViewController, MCBrowserViewControllerDelegate, MCSessi
     var assistant: MCAdvertiserAssistant!
     var session: MCSession!
     var peerID:  MCPeerID!
-    let boardView = Field()
+    let ownFieldView = FieldView()
     
 
     //MARK:テスト用
@@ -32,7 +32,8 @@ class ViewController: UIViewController, MCBrowserViewControllerDelegate, MCSessi
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        initialize()
+        ownFieldView.initialize()
+        self.view.addSubview(ownFieldView)
         
         self.peerID = MCPeerID(displayName: UIDevice.currentDevice().name)
         self.session = MCSession(peer: peerID)
@@ -49,7 +50,6 @@ class ViewController: UIViewController, MCBrowserViewControllerDelegate, MCSessi
         
         // tell the assistant to start advertising our fabulous chat
         self.assistant.start()
-        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -57,7 +57,6 @@ class ViewController: UIViewController, MCBrowserViewControllerDelegate, MCSessi
         if self.session.connectedPeers.count == 0 {
             self.presentViewController(self.browser, animated: true, completion: nil)
         }
-        
     }
     
     func browserViewControllerDidFinish(
@@ -75,58 +74,6 @@ class ViewController: UIViewController, MCBrowserViewControllerDelegate, MCSessi
         view.sendSubviewToBack(shipView)    //shipViewを最背面に
         shipView.addShip(ship)
 
-    }
-    
-    func initialize(){
-        
-        let boardSize = CGSizeMake(screenWidth,screenHeight)
-        let boardOrigin = CGPointMake(0,(screenHeight - boardSize.height)/2)
-        
-        boardView.frame.origin = boardOrigin
-        boardView.frame.size = boardSize
-        self.view.addSubview(boardView)
-        
-        let btnSize = boardSize.width/CGFloat(fieldSize)
-        
-        for y in 0 ..< fieldSize {
-            for x in 0 ..< fieldSize {
-                let btn = UIButton(frame: CGRectMake(btnSize * CGFloat(x),btnSize * CGFloat(y),btnSize, btnSize))
-                btn.layer.borderWidth = 2.0
-                btn.layer.borderColor = UIColor.grayColor().CGColor
-                boardView.addSubview(btn)
-                
-                btn.tag = y*fieldSize + x
-                btn.alpha = 0.7
-                btn.addTarget(self, action:"onBtnClick:" , forControlEvents: .TouchUpInside)
-                
-            }
-        }
-    }
-    
-    func onBtnClick(btn: UIButton){
-        
-        let x = btn.tag % fieldSize
-        let y = btn.tag / fieldSize
-        print("x:\(x),y:\(y)")
-        let pos = Position(x: x,y: y)
-        boardView.burn_at(pos){(status) in
-            if status == Field.Cell.Blank {
-                btn.backgroundColor = UIColor.blackColor()
-                let msg = "test".dataUsingEncoding(NSUTF8StringEncoding,
-                                                   allowLossyConversion: false)
-                
-                do{
-                    try self.session.sendData(msg!, toPeers: self.session.connectedPeers,
-                                              withMode: MCSessionSendDataMode.Unreliable)
-                }catch{
-                    //えらー
-                }
-            }else if status == Field.Cell.Ship{
-                btn.backgroundColor = UIColor.yellowColor()
-            }else{
-                self.setAlert("そこには大砲を打てません")
-            }
-        }
     }
     
     func setAlert(message:String){
