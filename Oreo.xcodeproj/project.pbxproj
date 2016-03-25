@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		8709A0A31CA3F26600B01FDA /* MultipeerConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8709A0A21CA3F26600B01FDA /* MultipeerConnectivity.framework */; };
-		87560AA91CA474B80049BA52 /* FieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87560AA81CA474B80049BA52 /* FieldView.swift */; };
 		87560AA31CA45CD10049BA52 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87560AA21CA45CD10049BA52 /* Message.swift */; };
+		87560AA91CA474B80049BA52 /* FieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87560AA81CA474B80049BA52 /* FieldView.swift */; };
 		9A5C669D1CA3CAEA00F32644 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5C669C1CA3CAEA00F32644 /* AppDelegate.swift */; };
 		9A5C669F1CA3CAEA00F32644 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5C669E1CA3CAEA00F32644 /* ViewController.swift */; };
 		9A5C66A21CA3CAEA00F32644 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A5C66A01CA3CAEA00F32644 /* Main.storyboard */; };
@@ -50,8 +50,8 @@
 
 /* Begin PBXFileReference section */
 		8709A0A21CA3F26600B01FDA /* MultipeerConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MultipeerConnectivity.framework; path = System/Library/Frameworks/MultipeerConnectivity.framework; sourceTree = SDKROOT; };
-		87560AA81CA474B80049BA52 /* FieldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldView.swift; sourceTree = "<group>"; };
 		87560AA21CA45CD10049BA52 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		87560AA81CA474B80049BA52 /* FieldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldView.swift; sourceTree = "<group>"; };
 		9A5C66991CA3CAEA00F32644 /* Oreo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Oreo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A5C669C1CA3CAEA00F32644 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9A5C669E1CA3CAEA00F32644 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };

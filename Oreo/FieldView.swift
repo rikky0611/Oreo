@@ -11,13 +11,14 @@ import UIKit
 import MultipeerConnectivity
 
 protocol FieldViewDelegate {
-    //func sendMessage(msg: Message) -> Bool;
+    func sendMessage(msg: Message) -> Bool;
 }
 
 class FieldView :UIView {
     let screenWidth = UIScreen.mainScreen().bounds.size.width
     let screenHeight = UIScreen.mainScreen().bounds.size.height
     let field = Field()
+    var delegate: FieldViewDelegate!
     
     func initialize(){
         let boardSize = CGSizeMake(screenWidth,screenHeight)
@@ -43,25 +44,22 @@ class FieldView :UIView {
     }
     
     func onBtnClick(btn: UIButton){
+        // considering only the case attacking enemy field view
+        
         let x = btn.tag % fieldSize
         let y = btn.tag / fieldSize
         print("x:\(x),y:\(y)")
         let pos = Position(x: x,y: y)
-        self.field.burn_at(pos){(status) in
-            if status == Field.Cell.Blank {
-                btn.backgroundColor = UIColor.blackColor()
-                do{
-                    try self.session.sendData(msg!, toPeers: self.session.connectedPeers,
-                                              withMode: MCSessionSendDataMode.Unreliable)
-
-                }catch{
-                    //えらー
-                }
-            }else if status == Field.Cell.Ship{
-                btn.backgroundColor = UIColor.yellowColor()
-            }else{
-                
-            }
+        
+        if !field.is_attackable(pos) {
+            // alert you can't attack there
+            return
         }
+        
+        let msg = Message(type: .Attack, target: pos, result: true)
+        self.delegate!.sendMessage(msg)
+        
+        // for test, to be deleted
+        btn.backgroundColor = UIColor.blackColor()
     }
 }

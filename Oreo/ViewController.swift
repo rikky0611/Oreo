@@ -9,7 +9,7 @@
 import UIKit
 import MultipeerConnectivity
 
-class ViewController: UIViewController, MCBrowserViewControllerDelegate, MCSessionDelegate {
+class ViewController: UIViewController, MCBrowserViewControllerDelegate, MCSessionDelegate, FieldViewDelegate {
     
     let screenWidth = UIScreen.mainScreen().bounds.size.width
     let screenHeight = UIScreen.mainScreen().bounds.size.height
@@ -33,6 +33,7 @@ class ViewController: UIViewController, MCBrowserViewControllerDelegate, MCSessi
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         ownFieldView.initialize()
+        ownFieldView.delegate = self
         self.view.addSubview(ownFieldView)
         
         self.peerID = MCPeerID(displayName: UIDevice.currentDevice().name)
@@ -57,6 +58,18 @@ class ViewController: UIViewController, MCBrowserViewControllerDelegate, MCSessi
         if self.session.connectedPeers.count == 0 {
             self.presentViewController(self.browser, animated: true, completion: nil)
         }
+    }
+    
+    func sendMessage(msg: Message) -> Bool {
+        do {
+            try self.session.sendData(NSData.packMessage(msg), toPeers: self.session.connectedPeers,
+                                  withMode: MCSessionSendDataMode.Unreliable)
+        }catch{
+            // error handling
+        }
+            
+        
+        return true
     }
     
     func browserViewControllerDidFinish(

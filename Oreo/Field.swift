@@ -49,6 +49,15 @@ class Field :UIView {
         }
     }
     
+    func is_attackable (pos: Position) -> Bool{
+        switch cell_arr[pos.x][pos.y] {
+        case .attacked_Ship, .attacked_Blank:
+            return false
+        default:
+            return true
+        }
+    }
+    
     func miss_at(pos:Position){
         // TODO:水しぶき実装
     }
