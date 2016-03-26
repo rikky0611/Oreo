@@ -13,8 +13,7 @@ class ViewController: UIViewController, MCBrowserViewControllerDelegate, MCSessi
     
     let screenWidth = UIScreen.mainScreen().bounds.size.width
     let screenHeight = UIScreen.mainScreen().bounds.size.height
-    //let fieldSize = Field.fieldSize
-
+    
     // MultipeerConnectivity Settings
     let serviceType = "mikanlabsoreo" // unique service name
     var browser: MCBrowserViewController!
@@ -23,12 +22,6 @@ class ViewController: UIViewController, MCBrowserViewControllerDelegate, MCSessi
     var peerID:  MCPeerID!
     let ownFieldView = FieldView()
     let enemyFieldView = FieldView()
-    
-
-    //MARK:テスト用
-    var dir : Direction!
-    var pos : Position!
-    var ship : Ship!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,14 +81,7 @@ class ViewController: UIViewController, MCBrowserViewControllerDelegate, MCSessi
         // button was tapped)
         
         self.dismissViewControllerAnimated(true, completion: nil)
-        //MARK:テスト用
-        pos = Position(x:2,y:2)
-        dir = Direction(direction: 0)
-        ship = Ship(pos: pos, dir: dir, type: Type.Submarine)
-        let shipView = ShipView(frame: CGRectMake(0,0,screenWidth,screenHeight))
-        view.addSubview(shipView)
-        view.sendSubviewToBack(shipView)    //shipViewを最背面に
-        shipView.addShip(ship)
+        
 
     }
     

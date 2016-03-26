@@ -20,6 +20,11 @@ class FieldView :UIView, FieldDelegate {
         case Own
     }
     
+    //MARK:テスト用
+    var dir : Direction!
+    var pos : Position!
+    var ship : Ship!
+    
     var side: Side = .Enemy
     let screenWidth = UIScreen.mainScreen().bounds.size.width
     let screenHeight = UIScreen.mainScreen().bounds.size.height
@@ -51,6 +56,18 @@ class FieldView :UIView, FieldDelegate {
                 btn.addTarget(self, action:"onBtnClick:" , forControlEvents: .TouchUpInside)
             }
         }
+        shipAdd()
+    }
+    
+    func shipAdd() {
+        //MARK:テスト用
+        pos = Position(x:2,y:2)
+        dir = Direction(direction: 0)
+        ship = Ship(pos: pos, dir: dir, type: Type.Submarine)
+        let shipView = ShipView(frame: CGRectMake(0,0,self.frame.width,self.frame.height))
+        self.addSubview(shipView)
+        self.sendSubviewToBack(shipView)    //shipViewを最背面に
+        shipView.addShip(ship)
     }
     
     func onBtnClick(btn: UIButton){
