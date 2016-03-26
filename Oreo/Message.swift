@@ -12,7 +12,7 @@ import UIKit
 struct Message {
     var type: MessageType
     var target: Position
-    var is_success: Bool?
+    var is_success: Bool
     
     enum MessageType: String {
         case Attack = "Attack"
@@ -39,7 +39,7 @@ struct Message {
 
         self.type = MessageType(rawValue: dict["type"] ?? "Attack")!
         self.target = Position(x: Int(dict["x"] ?? "0")!, y: Int(dict["y"] ?? "0")!)
-        self.is_success = (dict["result"] ?? "false")!.toBool()
+        self.is_success = (dict["result"] ?? "false")!.toBool()!
         print(description)
     }
     

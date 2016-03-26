@@ -129,11 +129,9 @@ class ViewController: UIViewController, MCBrowserViewControllerDelegate, MCSessi
         
         
         dispatch_async(dispatch_get_main_queue()) {
-            self.setAlert("start getting attacked")
             print("start getting attacked")
             
             let rawStr = String(data: data, encoding: NSUTF8StringEncoding)
-            
             guard let str = rawStr else {
                 print("data couldn't be parsed")
                 return
@@ -145,11 +143,25 @@ class ViewController: UIViewController, MCBrowserViewControllerDelegate, MCSessi
                 return
             }
             
-            self.setAlert(msg.description)
             print(msg.description)
             
-            self.setAlert("攻撃を受けました。")
+            
+            
+            switch msg.type {
+            case .Attack:
+                self.ownFieldView.getAttackedAt(msg.target)
+                self.setAlert("攻撃を受けました。")
+            default:
+                if msg.is_success {
+                    self.enemyFieldView.markBurnedAt(msg.target)
+                    self.setAlert("攻撃が成功しました。")
+                }else{
+                    self.enemyFieldView.markMissedAt(msg.target)
+                    self.setAlert("攻撃は失敗しました。")
+                }
+            }
         }
+        
         
     }
     

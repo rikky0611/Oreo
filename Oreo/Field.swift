@@ -87,8 +87,17 @@ class Field :UIView {
         return self.cell_arr[pos.x][pos.y]==Cell.Blank
     }
     
-    func getAttackedAt(pos:Position){
+    func getAttackedAt(pos:Position) -> Bool{
+        let status = cell_arr[pos.x][pos.y]
+        cell_arr[pos.x][pos.y] = .attacked_Blank
+        delegate.markBurnedAt(pos)
         
+        switch status {
+        case .attacked_Ship:
+            return true
+        default:
+            return false
+        }
     }
 }
 

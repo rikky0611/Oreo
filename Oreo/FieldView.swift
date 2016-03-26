@@ -27,7 +27,9 @@ class FieldView :UIView, FieldDelegate {
     var delegate: FieldViewDelegate!
     
     func initialize(side :Side){
-        self.side = side
+        self.side = side // own or enemy
+        
+        field.delegate = self
         
         let boardSize = CGSizeMake(screenWidth*8/9,screenWidth*8/9)
         self.left = screenWidth*8/18
@@ -76,6 +78,17 @@ class FieldView :UIView, FieldDelegate {
         
         let msg = Message(type: .Attack, target: pos, result: true)
         self.delegate!.sendMessage(msg)
+    }
+    
+    func getAttackedAt(pos: Position) {
+        let is_effective = field.getAttackedAt(pos)
+        let msg = Message(type: .Result, target: pos, result: is_effective)
+        delegate.sendMessage(msg)
+    }
+    
+    func markMissedAt(pos: Position){
+        let btn = self.viewWithTag(pos.to_i()) as? UIButton
+        btn?.backgroundColor = UIColor.blueColor()
     }
     
     func markBurnedAt(pos: Position) {
