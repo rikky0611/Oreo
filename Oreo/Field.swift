@@ -18,6 +18,10 @@ enum Cell {
     case attacked_Blank
 }
 
+protocol FieldDelegate {
+    func markBurnedAt(pos: Position)
+}
+
 class Field :UIView {
     
     enum Cell {
@@ -30,6 +34,7 @@ class Field :UIView {
     //static let fieldSize = 5
     static var cell_line = Array(count: fieldSize, repeatedValue: Cell.Blank)
     var cell_arr = Array(count: fieldSize, repeatedValue: cell_line)
+    var delegate: FieldDelegate!
     
     func burn_at(pos:Position, completion:(Cell)->Void){
         print(cell_arr[pos.x][pos.y])
@@ -82,6 +87,9 @@ class Field :UIView {
         return self.cell_arr[pos.x][pos.y]==Cell.Blank
     }
     
+    func getAttackedAt(pos:Position){
+        
+    }
 }
 
 class OwnField :Field{

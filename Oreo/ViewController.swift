@@ -74,7 +74,7 @@ class ViewController: UIViewController, MCBrowserViewControllerDelegate, MCSessi
         }catch{
             // error handling
         }
-            
+        
         return true
     }
     
@@ -122,13 +122,15 @@ class ViewController: UIViewController, MCBrowserViewControllerDelegate, MCSessi
     
     func session(session: MCSession, didReceiveData data: NSData,
                  fromPeer peerID: MCPeerID)  {
-        // Called when a peer sends an NSData to us
         
-        // This needs to run on the main queue
+        
         dispatch_async(dispatch_get_main_queue()) {
-            //let msg = NSString(data: data, encoding: NSUTF8StringEncoding)
-            self.setAlert("攻撃を受けました。")
+            var msg = data.unpackMessage()
+            //self.ownFieldView.field.getAttackedAt(msg.target!)
+            //self.setAlert("攻撃を受けました。")
+            //print("\(msg.target?.to_i())")
         }
+        
     }
     
     // The following methods do nothing, but the MCSessionDelegate protocol

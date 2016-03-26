@@ -14,11 +14,12 @@ protocol FieldViewDelegate {
     func sendMessage(msg: Message) -> Bool;
 }
 
-class FieldView :UIView {
+class FieldView :UIView, FieldDelegate {
     enum Side {
         case Enemy
         case Own
     }
+    
     var side: Side = .Enemy
     let screenWidth = UIScreen.mainScreen().bounds.size.width
     let screenHeight = UIScreen.mainScreen().bounds.size.height
@@ -43,7 +44,7 @@ class FieldView :UIView {
                 btn.layer.borderColor = UIColor.grayColor().CGColor
                 self.addSubview(btn)
                 
-                btn.tag = y*fieldSize + x
+                btn.tag = Position(x: x, y: y).to_i()
                 btn.alpha = 0.7
                 btn.addTarget(self, action:"onBtnClick:" , forControlEvents: .TouchUpInside)
             }
@@ -52,25 +53,23 @@ class FieldView :UIView {
     
     func onBtnClick(btn: UIButton){
         // considering only the case attacking enemy field view
-        let x = btn.tag % fieldSize
-        let y = btn.tag / fieldSize
-        print("x:\(x),y:\(y)")
-        let pos = Position(x: x,y: y)
+        let pos = btn.tag.to_p()
         switch self.side {
         case .Own:
             onBtnClickOwn(pos)
             // for test, to be deleted
-            btn.backgroundColor = UIColor.blackColor()
         default:
+            print("will call onBtnClickEnemy")
             onBtnClickEnemy(pos)
         }
+        print("didCallonBtnClickEnemy")
     }
     
     func onBtnClickOwn(pos: Position) {
         
     }
     
-    func onBtnClickEnemy(pos :Position){
+    func onBtnClickEnemy(pos: Position){
         if !field.is_attackable(pos) {
             // alert you can't attack there
             return
@@ -78,5 +77,10 @@ class FieldView :UIView {
         
         let msg = Message(type: .Attack, target: pos, result: true)
         self.delegate!.sendMessage(msg)
+    }
+    
+    func markBurnedAt(pos: Position) {
+        let btn = self.viewWithTag(pos.to_i()) as? UIButton
+        btn?.backgroundColor = UIColor.blackColor()
     }
 }
