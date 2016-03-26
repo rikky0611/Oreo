@@ -57,7 +57,6 @@ class FieldView :UIView, FieldDelegate {
         switch self.side {
         case .Own:
             onBtnClickOwn(pos)
-            // for test, to be deleted
         default:
             print("will call onBtnClickEnemy")
             onBtnClickEnemy(pos)

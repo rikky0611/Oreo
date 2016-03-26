@@ -69,7 +69,11 @@ class ViewController: UIViewController, MCBrowserViewControllerDelegate, MCSessi
     
     func sendMessage(msg: Message) -> Bool {
         do {
-            try self.session.sendData(NSData.packMessage(msg), toPeers: self.session.connectedPeers,
+            let str = msg.toJson()
+            print(str)
+            let data = str.dataUsingEncoding(NSUTF8StringEncoding,
+                                          allowLossyConversion: false)
+            try self.session.sendData(data!, toPeers: self.session.connectedPeers,
                                   withMode: MCSessionSendDataMode.Unreliable)
         }catch{
             // error handling
@@ -125,10 +129,26 @@ class ViewController: UIViewController, MCBrowserViewControllerDelegate, MCSessi
         
         
         dispatch_async(dispatch_get_main_queue()) {
-            var msg = data.unpackMessage()
-            //self.ownFieldView.field.getAttackedAt(msg.target!)
-            //self.setAlert("攻撃を受けました。")
-            //print("\(msg.target?.to_i())")
+            self.setAlert("start getting attacked")
+            print("start getting attacked")
+            
+            let rawStr = String(data: data, encoding: NSUTF8StringEncoding)
+            
+            guard let str = rawStr else {
+                print("data couldn't be parsed")
+                return
+            }
+            
+            let rawMsg = Message(json: str)
+            guard let msg = rawMsg else {
+                print("msg is nil\n\(str)")
+                return
+            }
+            
+            self.setAlert(msg.description)
+            print(msg.description)
+            
+            self.setAlert("攻撃を受けました。")
         }
         
     }
