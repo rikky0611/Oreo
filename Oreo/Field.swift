@@ -99,6 +99,17 @@ class Field :UIView {
             return false
         }
     }
+    
+    func setCell(pos: Position, status: Cell){
+        cell_arr[pos.x][pos.y] = status
+    }
+    
+    func putShip(pos: Position, dir: Direction, ship: Ship) {
+        for i in 0..<ship.type.shipLength() {
+            let p = pos.move(i, dir: dir)
+            setCell(p, status: .Ship)
+        }
+    }
 }
 
 class OwnField :Field{

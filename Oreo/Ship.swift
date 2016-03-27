@@ -15,6 +15,16 @@ enum Type{
     case Cruiser    //巡洋艦 3マス
     case Submarine  //潜水艦 3マス
     case Destroyer  //駆逐艦 2マス
+    
+    func shipLength() -> Int{
+        switch self {
+        case .Carrier:       return 5
+        case .Battlecruiser: return 4
+        case .Cruiser:       return 3
+        case .Submarine:     return 3
+        case .Destroyer:     return 2
+        }
+    }
 }
 
 class Ship {

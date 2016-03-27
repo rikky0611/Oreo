@@ -23,6 +23,10 @@ class Position{
     func to_i() -> Int {
         return (x + y)*(x + y) + y
     }
+    
+    func move(by: Int, dir: Direction) -> Position{
+        return Position(x: self.x + dir.vector.x, y: self.y + dir.vector.y)
+    }
 }
 
 class Vector:Position{

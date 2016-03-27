@@ -64,10 +64,16 @@ class FieldView :UIView, FieldDelegate {
         pos = Position(x:2,y:2)
         dir = Direction(direction: 0)
         ship = Ship(pos: pos, dir: dir, type: Type.Submarine)
+        
+
         let shipView = ShipView(frame: CGRectMake(0,0,self.frame.width,self.frame.height))
         self.addSubview(shipView)
         self.sendSubviewToBack(shipView)    //shipViewを最背面に
         shipView.addShip(ship)
+    }
+    
+    func setField(pos: Position, dir: Direction, ship: Ship){
+        field.putShip(pos, dir: dir, ship: ship)
     }
     
     func onBtnClick(btn: UIButton){
