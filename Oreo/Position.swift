@@ -25,7 +25,7 @@ class Position{
     }
     
     func move(by: Int, dir: Direction) -> Position{
-        return Position(x: self.x + dir.vector.x, y: self.y + dir.vector.y)
+        return Position(x: self.x + by * dir.vector.x, y: self.y + by * dir.vector.y)
     }
 }
 
