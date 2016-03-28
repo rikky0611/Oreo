@@ -88,8 +88,8 @@ class FieldView :UIView, FieldDelegate {
         default:
             print("will call onBtnClickEnemy")
             onBtnClickEnemy(pos)
+            print("didCallonBtnClickEnemy")
         }
-        print("didCallonBtnClickEnemy")
     }
     
     func onBtnClickOwn(pos: Position) {

@@ -12,8 +12,7 @@ import MultipeerConnectivity
 
 class GameViewController: UIViewController, MCBrowserViewControllerDelegate, MCSessionDelegate, FieldViewDelegate {
     
-    let ownFieldView = FieldView()
-    let enemyFieldView = FieldView()
+    var fieldViews: [FieldView.Side:FieldView] = [:]
     
     // MultipeerConnectivity Settings
     let serviceType = "mikanlabsoreo" // unique service name
@@ -40,15 +39,17 @@ class GameViewController: UIViewController, MCBrowserViewControllerDelegate, MCS
     }
     
     func putBothView() {
-        ownFieldView.initialize(FieldView.Side.Own)
-        ownFieldView.delegate = self
-        ownFieldView.bottom = self.view.bottom
-        self.view.addSubview(ownFieldView)
+        fieldViews[FieldView.Side.Own]   = FieldView()
+        fieldViews[FieldView.Side.Enemy] = FieldView()
         
-        enemyFieldView.initialize(FieldView.Side.Enemy)
-        enemyFieldView.delegate = self
-        enemyFieldView.top = self.view.top
-        self.view.addSubview(enemyFieldView)
+        for (side, view) in self.fieldViews {
+            print("\(side)")
+            view.delegate = self
+            view.initialize(side)
+            self.view.addSubview(view)
+        }
+        fieldViews[FieldView.Side.Own]!.bottom = self.view.bottom
+        fieldViews[FieldView.Side.Enemy]!.top  = self.view.top
     }
     
     override func viewDidAppear(animated: Bool) {
