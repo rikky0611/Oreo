@@ -65,11 +65,14 @@ class FieldView :UIView, FieldDelegate {
         dir = Direction(direction: 0)
         ship = Ship(pos: pos, dir: dir, type: Type.Submarine)
         
-
-        let shipView = ShipView(frame: CGRectMake(0,0,self.frame.width,self.frame.height))
-        self.addSubview(shipView)
-        self.sendSubviewToBack(shipView)    //shipViewを最背面に
-        shipView.addShip(ship)
+        setField(pos, dir: dir, ship: ship)
+        
+        if self.side == .Own {
+            let shipView = ShipView(frame: CGRectMake(0,0,self.frame.width,self.frame.height))
+            self.addSubview(shipView)
+            self.sendSubviewToBack(shipView)    //shipViewを最背面に
+            shipView.addShip(ship)
+        }
     }
     
     func setField(pos: Position, dir: Direction, ship: Ship){
@@ -104,8 +107,7 @@ class FieldView :UIView, FieldDelegate {
     }
     
     func getAttackedAt(pos: Position) {
-        let is_effective = field.getAttackedAt(pos)
-        let msg = Message(type: .Result, target: pos, result: is_effective)
+        let msg = field.getAttackedAt(pos)
         delegate.sendMessage(msg)
     }
     

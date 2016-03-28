@@ -87,21 +87,28 @@ class Field :UIView {
         return self.cell_arr[pos.x][pos.y]==Cell.Blank
     }
     
-    func getAttackedAt(pos:Position) -> Bool{
+    func getAttackedAt(pos:Position) -> Message{
         let status = cell_arr[pos.x][pos.y]
         cell_arr[pos.x][pos.y] = .attacked_Blank
         delegate.markBurnedAt(pos)
         
         switch status {
         case .attacked_Ship:
-            return true
-        default:
-            return false
+            return Message(type: .Result, target: pos, result: false)
+        case .Blank:
+            setCell(pos, status: .attacked_Blank)
+            return Message(type: .Result, target: pos, result: false)
+        case .Ship:
+            setCell(pos, status: .attacked_Ship)
+            return Message(type: .Result, target: pos, result: true)
+        case .attacked_Blank:
+            return Message(type: .Result, target: pos, result: false)
         }
     }
     
     func setCell(pos: Position, status: Cell){
         cell_arr[pos.x][pos.y] = status
+        print("setCell \(status)")
     }
     
     func putShip(pos: Position, dir: Direction, ship: Ship) {
