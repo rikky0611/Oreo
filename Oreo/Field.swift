@@ -18,6 +18,10 @@ enum Cell {
     case attacked_Blank
 }
 
+protocol FieldDelegate {
+    func markBurnedAt(pos: Position)
+}
+
 class Field :UIView {
     
     enum Cell {
@@ -30,6 +34,7 @@ class Field :UIView {
     //static let fieldSize = 5
     static var cell_line = Array(count: fieldSize, repeatedValue: Cell.Blank)
     var cell_arr = Array(count: fieldSize, repeatedValue: cell_line)
+    var delegate: FieldDelegate!
     
     func burn_at(pos:Position, completion:(Cell)->Void){
         print(cell_arr[pos.x][pos.y])
@@ -46,6 +51,15 @@ class Field :UIView {
         case .attacked_Ship:
             // TODO: 処理書く
             completion(.attacked_Ship)
+        }
+    }
+    
+    func is_attackable (pos: Position) -> Bool{
+        switch cell_arr[pos.x][pos.y] {
+        case .attacked_Ship, .attacked_Blank:
+            return false
+        default:
+            return true
         }
     }
     
@@ -73,6 +87,29 @@ class Field :UIView {
         return self.cell_arr[pos.x][pos.y]==Cell.Blank
     }
     
+    func getAttackedAt(pos:Position) -> Bool{
+        let status = cell_arr[pos.x][pos.y]
+        cell_arr[pos.x][pos.y] = .attacked_Blank
+        delegate.markBurnedAt(pos)
+        
+        switch status {
+        case .attacked_Ship:
+            return true
+        default:
+            return false
+        }
+    }
+    
+    func setCell(pos: Position, status: Cell){
+        cell_arr[pos.x][pos.y] = status
+    }
+    
+    func putShip(pos: Position, dir: Direction, ship: Ship) {
+        for i in 0..<ship.type.shipLength() {
+            let p = pos.move(i, dir: dir)
+            setCell(p, status: .Ship)
+        }
+    }
 }
 
 class OwnField :Field{

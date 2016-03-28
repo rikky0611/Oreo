@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		8709A0A31CA3F26600B01FDA /* MultipeerConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8709A0A21CA3F26600B01FDA /* MultipeerConnectivity.framework */; };
-		87560AA91CA474B80049BA52 /* FieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87560AA81CA474B80049BA52 /* FieldView.swift */; };
 		87560AA31CA45CD10049BA52 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87560AA21CA45CD10049BA52 /* Message.swift */; };
+		87560AA91CA474B80049BA52 /* FieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87560AA81CA474B80049BA52 /* FieldView.swift */; };
+		87560AAB1CA5D1FD0049BA52 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87560AAA1CA5D1FD0049BA52 /* UIViewExtension.swift */; };
 		9A5C669D1CA3CAEA00F32644 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5C669C1CA3CAEA00F32644 /* AppDelegate.swift */; };
 		9A5C669F1CA3CAEA00F32644 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5C669E1CA3CAEA00F32644 /* ViewController.swift */; };
 		9A5C66A21CA3CAEA00F32644 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A5C66A01CA3CAEA00F32644 /* Main.storyboard */; };
@@ -50,8 +51,9 @@
 
 /* Begin PBXFileReference section */
 		8709A0A21CA3F26600B01FDA /* MultipeerConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MultipeerConnectivity.framework; path = System/Library/Frameworks/MultipeerConnectivity.framework; sourceTree = SDKROOT; };
-		87560AA81CA474B80049BA52 /* FieldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldView.swift; sourceTree = "<group>"; };
 		87560AA21CA45CD10049BA52 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		87560AA81CA474B80049BA52 /* FieldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldView.swift; sourceTree = "<group>"; };
+		87560AAA1CA5D1FD0049BA52 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		9A5C66991CA3CAEA00F32644 /* Oreo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Oreo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A5C669C1CA3CAEA00F32644 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9A5C669E1CA3CAEA00F32644 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 			children = (
 				9A5C66DE1CA42A8200F32644 /* Images */,
 				9A5C66E71CA4387B00F32644 /* UIImageExtension.swift */,
+				87560AAA1CA5D1FD0049BA52 /* UIViewExtension.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -279,7 +282,7 @@
 				TargetAttributes = {
 					9A5C66981CA3CAEA00F32644 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = W5GEL5NL4Y;
+						DevelopmentTeam = JZ35675RY3;
 					};
 					9A5C66AC1CA3CAEA00F32644 = {
 						CreatedOnToolsVersion = 7.2;
@@ -356,6 +359,7 @@
 				9A5C66E81CA4387B00F32644 /* UIImageExtension.swift in Sources */,
 				9A5C66F81CA457D100F32644 /* GameStatus.swift in Sources */,
 				9A5C669D1CA3CAEA00F32644 /* AppDelegate.swift in Sources */,
+				87560AAB1CA5D1FD0049BA52 /* UIViewExtension.swift in Sources */,
 				9A5C66D61CA4058000F32644 /* Position.swift in Sources */,
 				87560AA31CA45CD10049BA52 /* Message.swift in Sources */,
 				9A5C66CE1CA3CB1D00F32644 /* Field.swift in Sources */,
@@ -500,10 +504,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Oreo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mikan-labs.Oreo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -511,10 +518,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Oreo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mikan-labs.Oreo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

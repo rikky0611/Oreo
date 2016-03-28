@@ -19,6 +19,14 @@ class Position{
     func shift(x x:Int, y:Int) -> Position{
         return Position(x:self.x+x, y:self.y+y)
     }
+    
+    func to_i() -> Int {
+        return (x + y)*(x + y) + y
+    }
+    
+    func move(by: Int, dir: Direction) -> Position{
+        return Position(x: self.x + dir.vector.x, y: self.y + dir.vector.y)
+    }
 }
 
 class Vector:Position{
@@ -26,5 +34,14 @@ class Vector:Position{
         let x = self.x * i
         let y = self.y * i
         return Vector(x: x, y: y)
+    }
+}
+
+extension Int {
+    func to_p() -> Position {
+        let a = Int(sqrt(Double(self)))
+        let y = self - a*a
+        let x = Int(sqrt(Double(self))) - y
+        return Position(x: x, y: y)
     }
 }

@@ -9,12 +9,11 @@
 import UIKit
 import MultipeerConnectivity
 
-class ViewController: UIViewController, MCBrowserViewControllerDelegate, MCSessionDelegate {
+class ViewController: UIViewController, MCBrowserViewControllerDelegate, MCSessionDelegate, FieldViewDelegate {
     
     let screenWidth = UIScreen.mainScreen().bounds.size.width
     let screenHeight = UIScreen.mainScreen().bounds.size.height
-    //let fieldSize = Field.fieldSize
-
+    
     // MultipeerConnectivity Settings
     let serviceType = "mikanlabsoreo" // unique service name
     var browser: MCBrowserViewController!
@@ -22,18 +21,20 @@ class ViewController: UIViewController, MCBrowserViewControllerDelegate, MCSessi
     var session: MCSession!
     var peerID:  MCPeerID!
     let ownFieldView = FieldView()
-    
-
-    //MARK:テスト用
-    var dir : Direction!
-    var pos : Position!
-    var ship : Ship!
+    let enemyFieldView = FieldView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        ownFieldView.initialize()
+        ownFieldView.initialize(FieldView.Side.Own)
+        ownFieldView.delegate = self
+        ownFieldView.bottom = self.view.bottom
         self.view.addSubview(ownFieldView)
+        
+        enemyFieldView.initialize(FieldView.Side.Enemy)
+        enemyFieldView.delegate = self
+        enemyFieldView.top = self.view.top
+        self.view.addSubview(enemyFieldView)
         
         self.peerID = MCPeerID(displayName: UIDevice.currentDevice().name)
         self.session = MCSession(peer: peerID)
@@ -59,20 +60,28 @@ class ViewController: UIViewController, MCBrowserViewControllerDelegate, MCSessi
         }
     }
     
+    func sendMessage(msg: Message) -> Bool {
+        do {
+            let str = msg.toJson()
+            print(str)
+            let data = str.dataUsingEncoding(NSUTF8StringEncoding,
+                                          allowLossyConversion: false)
+            try self.session.sendData(data!, toPeers: self.session.connectedPeers,
+                                  withMode: MCSessionSendDataMode.Unreliable)
+        }catch{
+            // error handling
+        }
+        
+        return true
+    }
+    
     func browserViewControllerDidFinish(
         browserViewController: MCBrowserViewController)  {
         // Called when the browser view controller is dismissed (ie the Done
         // button was tapped)
         
         self.dismissViewControllerAnimated(true, completion: nil)
-        //MARK:テスト用
-        pos = Position(x:2,y:2)
-        dir = Direction(direction: 0)
-        ship = Ship(pos: pos, dir: dir, type: Type.Submarine)
-        let shipView = ShipView(frame: CGRectMake(0,0,screenWidth,screenHeight))
-        view.addSubview(shipView)
-        view.sendSubviewToBack(shipView)    //shipViewを最背面に
-        shipView.addShip(ship)
+        
 
     }
     
@@ -103,13 +112,43 @@ class ViewController: UIViewController, MCBrowserViewControllerDelegate, MCSessi
     
     func session(session: MCSession, didReceiveData data: NSData,
                  fromPeer peerID: MCPeerID)  {
-        // Called when a peer sends an NSData to us
         
-        // This needs to run on the main queue
+        
         dispatch_async(dispatch_get_main_queue()) {
-            //let msg = NSString(data: data, encoding: NSUTF8StringEncoding)
-            self.setAlert("攻撃を受けました。")
+            print("start getting attacked")
+            
+            let rawStr = String(data: data, encoding: NSUTF8StringEncoding)
+            guard let str = rawStr else {
+                print("data couldn't be parsed")
+                return
+            }
+            
+            let rawMsg = Message(json: str)
+            guard let msg = rawMsg else {
+                print("msg is nil\n\(str)")
+                return
+            }
+            
+            print(msg.description)
+            
+            
+            
+            switch msg.type {
+            case .Attack:
+                self.ownFieldView.getAttackedAt(msg.target)
+                self.setAlert("攻撃を受けました。")
+            default:
+                if msg.is_success {
+                    self.enemyFieldView.markBurnedAt(msg.target)
+                    self.setAlert("攻撃が成功しました。")
+                }else{
+                    self.enemyFieldView.markMissedAt(msg.target)
+                    self.setAlert("攻撃は失敗しました。")
+                }
+            }
         }
+        
+        
     }
     
     // The following methods do nothing, but the MCSessionDelegate protocol
