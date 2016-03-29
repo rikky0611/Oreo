@@ -13,6 +13,8 @@ import MultipeerConnectivity
 class MultiGameViewController: UIViewController, MCBrowserViewControllerDelegate, MCSessionDelegate, FieldViewDelegate {
     
     var fieldViews: [FieldView.Side:FieldView] = [:]
+    let ownFieldView = FieldView()
+    let enemyFieldView = FieldView()
     
     // MultipeerConnectivity Settings
     let serviceType = "mikanlabsoreo" // unique service name
