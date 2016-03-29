@@ -11,12 +11,9 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
-    let ownFieldView = FieldView()
-    let enemyFieldView = FieldView()
-    
     func showMenu() {
         let button   = UIButton(type: UIButtonType.System) as UIButton
-        button.frame = CGRectMake(100, 100, 100, 50)
+        button.frame = CGRectMake(100, 100, 200, 50)
         button.backgroundColor = UIColor.greenColor()
         button.setTitle("Single Playper Mode", forState: UIControlState.Normal)
         button.addTarget(self, action: "startSinglePlayerGame:", forControlEvents: UIControlEvents.TouchUpInside)
@@ -26,7 +23,6 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.view.backgroundColor = UIColor.whiteColor()
         showMenu()
     }
