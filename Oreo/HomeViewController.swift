@@ -28,7 +28,7 @@ class HomeViewController: UIViewController {
     }
     
     func startSinglePlayerGame(sender: UIButton) {
-        let gameViewController = GameViewController()
+        let gameViewController = SingleGameViewController()
         self.presentViewController(gameViewController, animated: true, completion: nil)
     }
     
