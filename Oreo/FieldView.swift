@@ -14,7 +14,7 @@ protocol FieldViewDelegate {
     func btnActionOf(of: Position, from: FieldView.Side)
 }
 
-class FieldView :UIView, FieldDelegate {
+class FieldView :UIView {
     enum Side {
         case Enemy
         case Own
@@ -91,7 +91,7 @@ class FieldView :UIView, FieldDelegate {
         btn?.backgroundColor = UIColor.blackColor()
     }
     
-    func putShip(pos: Position, dir: Direction, ship: Ship) {
+    func putShip(ship: Ship) {
         if self.side == .Own {
             let shipView = ShipView(frame: CGRectMake(0,0,self.frame.width,self.frame.height))
             self.addSubview(shipView)

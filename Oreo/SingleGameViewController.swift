@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class SingleGameViewController: UIViewController, FieldViewDelegate, FieldDelegate {
+class SingleGameViewController: UIViewController, FieldViewDelegate {
     
     var fieldViews: [FieldView.Side:FieldView] = [:]
     var fields:     [FieldView.Side:Field]     = [:]
@@ -40,15 +40,15 @@ class SingleGameViewController: UIViewController, FieldViewDelegate, FieldDelega
         let ship = Ship(pos: pos, dir: dir, type: Type.Submarine)
         
         for (side,_) in fields {
-            self.putShip(side, pos: pos, dir: dir, ship: ship)
+            self.putShip(side, ship: ship)
         }
         
         
     }
     
-    func putShip(side: FieldView.Side, pos: Position, dir: Direction, ship: Ship) {
-        fields[side]?.putShip(pos, dir: dir, ship: ship)
-        fieldViews[side]?.putShip(pos, dir: dir, ship: ship)
+    func putShip(side: FieldView.Side, ship: Ship) {
+        fields[side]?.putShip(ship)
+        fieldViews[side]?.putShip(ship)
     }
     
     func putBothView() {

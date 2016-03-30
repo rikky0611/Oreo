@@ -107,9 +107,9 @@ class Field :UIView {
         print("setCell \(status)")
     }
     
-    func putShip(pos: Position, dir: Direction, ship: Ship) {
+    func putShip(ship: Ship) {
         for i in 0..<ship.type.shipLength() {
-            let p = pos.move(i, dir: dir)
+            let p = ship.position.move(i, dir: ship.direction)
             setCell(p, status: .Ship)
         }
     }
