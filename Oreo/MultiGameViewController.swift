@@ -36,6 +36,7 @@ class MultiGameViewController: UIViewController, MCBrowserViewControllerDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         putBothView()
+        self.view.backgroundColor = UIColor.whiteColor()
     }
     
     func putBothView() {
@@ -150,14 +151,14 @@ class MultiGameViewController: UIViewController, MCBrowserViewControllerDelegate
     func recieveMessage(msg: Message, to: FieldView.Side){
         switch msg.type {
         case .Attack:
-            self.ownFieldView.getAttackedAt(msg.target)
+            //self.fieldViews[FieldView.Side.Own]!.getAttackedAt(msg.target)
             self.setAlert("攻撃を受けました。")
         default:
             if msg.is_success {
-                self.enemyFieldView.markBurnedAt(msg.target)
+                self.fieldViews[FieldView.Side.Enemy]!.markBurnedAt(msg.target)
                 self.setAlert("攻撃が成功しました。")
             }else{
-                self.enemyFieldView.markMissedAt(msg.target)
+                self.fieldViews[FieldView.Side.Enemy]!.markMissedAt(msg.target)
                 self.setAlert("攻撃は失敗しました。")
             }
         }

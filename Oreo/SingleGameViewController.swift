@@ -28,7 +28,7 @@ class SingleGameViewController: UIViewController, MCBrowserViewControllerDelegat
     
     var gameType: GameType = .SinglePlaper
     var toShowBrowser = true
-    
+
     func initialize(type: GameType) {
         self.gameType = type
     }
@@ -36,6 +36,7 @@ class SingleGameViewController: UIViewController, MCBrowserViewControllerDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         putBothView()
+        self.view.backgroundColor = UIColor.whiteColor()
     }
     
     func putBothView() {
@@ -104,7 +105,7 @@ class SingleGameViewController: UIViewController, MCBrowserViewControllerDelegat
     }
     
     func sendMessageToTheOtherField(msg: Message) {
-        recieveMessage(msg, to: FieldView.Side.Enemy)
+        //recieveMessage(msg, to: FieldView.Side.Enemy)
     }
     
     func browserViewControllerDidFinish(
@@ -150,14 +151,14 @@ class SingleGameViewController: UIViewController, MCBrowserViewControllerDelegat
     func recieveMessage(msg: Message, to: FieldView.Side){
         switch msg.type {
         case .Attack:
-            self.ownFieldView.getAttackedAt(msg.target)
+           // self.fieldViews[FieldView.Side.Own]!.getAttackedAt(msg.target)
             self.setAlert("攻撃を受けました。")
         default:
             if msg.is_success {
-                self.enemyFieldView.markBurnedAt(msg.target)
+                self.fieldViews[FieldView.Side.Enemy]!.markBurnedAt(msg.target)
                 self.setAlert("攻撃が成功しました。")
             }else{
-                self.enemyFieldView.markMissedAt(msg.target)
+                self.fieldViews[FieldView.Side.Enemy]!.markMissedAt(msg.target)
                 self.setAlert("攻撃は失敗しました。")
             }
         }
@@ -175,6 +176,7 @@ class SingleGameViewController: UIViewController, MCBrowserViewControllerDelegat
             print("finished")
         })
     }
+
     
     // The following methods do nothing, but the MCSessionDelegate protocol
     // requires that we implement them.

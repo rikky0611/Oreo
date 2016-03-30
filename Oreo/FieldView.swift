@@ -101,14 +101,41 @@ class FieldView :UIView, FieldDelegate {
             // alert you can't attack there
             return
         }
-        
-        let msg = Message(type: .Attack, target: pos, result: true)
-        self.delegate!.sendMessage(msg)
+        attackAt(pos)
+        //let msg = Message(type: .Attack, target: pos, result: true)
+        //self.delegate!.sendMessage(msg)
+    }
+    
+    func attackAt(pos: Position) {
+        if field.isBlank(pos) {
+            markMissedAt(pos)
+            self.setAlert("攻撃は失敗しました。")
+        }
+        else {
+            markBurnedAt(pos)
+            self.setAlert("攻撃が成功しました。")
+        }
+    }
+    
+    private func presentViewController(alert: UIAlertController, animated flag: Bool, completion: (() -> Void)?) -> Void {
+        UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(alert, animated: flag, completion: completion)
+    }
+    func setAlert(message:String){
+        let alert:UIAlertController = UIAlertController(title: "警告", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {
+            action in
+            // ボタンが押された時の処理
+            print ("pushed")
+        }))
+        self.presentViewController(alert, animated: true, completion: {
+            // 表示完了時の処理
+            print("finished")
+        })
     }
     
     func getAttackedAt(pos: Position) {
         let msg = field.getAttackedAt(pos)
-        delegate.sendMessage(msg)
+        //delegate.sendMessage(msg)
     }
     
     func markMissedAt(pos: Position){
