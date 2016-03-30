@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import MultipeerConnectivity
 
-class MultiGameViewController: UIViewController, MCBrowserViewControllerDelegate, MCSessionDelegate, FieldViewDelegate {
+class MultiGameViewController: UIViewController, MCBrowserViewControllerDelegate, MCSessionDelegate {
     
     var fieldViews: [FieldView.Side:FieldView] = [:]
     
@@ -45,7 +45,7 @@ class MultiGameViewController: UIViewController, MCBrowserViewControllerDelegate
         
         for (side, view) in self.fieldViews {
             print("\(side)")
-            view.delegate = self
+            //view.delegate = self
             view.initialize(side)
             self.view.addSubview(view)
         }
