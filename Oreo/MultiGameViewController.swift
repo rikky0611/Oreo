@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import MultipeerConnectivity
 
-class MultiGameViewController: UIViewController, MCBrowserViewControllerDelegate, MCSessionDelegate, FieldViewDelegate {
+class MultiGameViewController: UIViewController, MCBrowserViewControllerDelegate, MCSessionDelegate {
     
     var fieldViews: [FieldView.Side:FieldView] = [:]
     let ownFieldView = FieldView()
@@ -38,6 +38,7 @@ class MultiGameViewController: UIViewController, MCBrowserViewControllerDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         putBothView()
+        self.view.backgroundColor = UIColor.whiteColor()
     }
     
     func putBothView() {
@@ -46,7 +47,7 @@ class MultiGameViewController: UIViewController, MCBrowserViewControllerDelegate
         
         for (side, view) in self.fieldViews {
             print("\(side)")
-            view.delegate = self
+            //view.delegate = self
             view.initialize(side)
             self.view.addSubview(view)
         }
@@ -152,14 +153,14 @@ class MultiGameViewController: UIViewController, MCBrowserViewControllerDelegate
     func recieveMessage(msg: Message, to: FieldView.Side){
         switch msg.type {
         case .Attack:
-            self.ownFieldView.getAttackedAt(msg.target)
+            //self.fieldViews[FieldView.Side.Own]!.getAttackedAt(msg.target)
             self.setAlert("攻撃を受けました。")
         default:
             if msg.is_success {
-                self.enemyFieldView.markBurnedAt(msg.target)
+                self.fieldViews[FieldView.Side.Enemy]!.markBurnedAt(msg.target)
                 self.setAlert("攻撃が成功しました。")
             }else{
-                self.enemyFieldView.markMissedAt(msg.target)
+                self.fieldViews[FieldView.Side.Enemy]!.markMissedAt(msg.target)
                 self.setAlert("攻撃は失敗しました。")
             }
         }

@@ -8,20 +8,14 @@
 
 import Foundation
 import UIKit
-import MultipeerConnectivity
 
-class SingleGameViewController: UIViewController, MCBrowserViewControllerDelegate, MCSessionDelegate, FieldViewDelegate {
+class SingleGameViewController: UIViewController, FieldViewDelegate {
     
     var fieldViews: [FieldView.Side:FieldView] = [:]
-    let ownFieldView = FieldView()
-    let enemyFieldView = FieldView()
+    var fields:     [FieldView.Side:Field]     = [:]
     
     // MultipeerConnectivity Settings
     let serviceType = "mikanlabsoreo" // unique service name
-    var browser: MCBrowserViewController!
-    var assistant: MCAdvertiserAssistant!
-    var session: MCSession!
-    var peerID:  MCPeerID!
     
     enum GameType {
         case SinglePlaper
@@ -30,7 +24,7 @@ class SingleGameViewController: UIViewController, MCBrowserViewControllerDelegat
     
     var gameType: GameType = .SinglePlaper
     var toShowBrowser = true
-    
+
     func initialize(type: GameType) {
         self.gameType = type
     }
@@ -38,6 +32,23 @@ class SingleGameViewController: UIViewController, MCBrowserViewControllerDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         putBothView()
+        self.view.backgroundColor = UIColor.whiteColor()
+        
+        // for test
+        let pos = Position(x:2,y:2)
+        let dir = Direction(direction: 0)
+        let ship = Ship(pos: pos, dir: dir, type: Type.Submarine)
+        
+        for (side,_) in fields {
+            self.putShip(side, ship: ship)
+        }
+        
+        
+    }
+    
+    func putShip(side: FieldView.Side, ship: Ship) {
+        fields[side]?.putShip(ship)
+        fieldViews[side]?.putShip(ship)
     }
     
     func putBothView() {
@@ -49,159 +60,40 @@ class SingleGameViewController: UIViewController, MCBrowserViewControllerDelegat
             view.delegate = self
             view.initialize(side)
             self.view.addSubview(view)
+            
+            self.fields[side] = Field()
         }
         fieldViews[FieldView.Side.Own]!.bottom = self.view.bottom
         fieldViews[FieldView.Side.Enemy]!.top  = self.view.top
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        if self.gameType == .MultiPlayer && self.session.connectedPeers.count == 0 && toShowBrowser{
-            self.presentViewController(self.browser, animated: false, completion: nil)
-            self.toShowBrowser = false
-        }
-    }
-    
-    func configureMultiPlayerSetting(){
-        self.peerID = MCPeerID(displayName: UIDevice.currentDevice().name)
-        self.session = MCSession(peer: peerID)
-        self.session.delegate = self
+    func btnActionOf(of: Position, from: FieldView.Side) {
         
-        // create the browser ViewController with a unique service name
-        self.browser = MCBrowserViewController(serviceType: serviceType,
-            session: self.session)
-        
-        self.browser.delegate = self
-        
-        self.assistant = MCAdvertiserAssistant(serviceType: serviceType,
-            discoveryInfo: nil, session: self.session)
-        
-        // tell the assistant to start advertising our fabulous chat
-        self.assistant.start()
-        
-    }
-    
-    func sendMessage(msg: Message) -> Bool {
-        switch self.gameType {
-        case .MultiPlayer:
-            sendMessageToPeers(msg)
-        default:
-            sendMessageToTheOtherField(msg)
+        // if shipplacing Phase
+        if from == FieldView.Side.Own {
+            // some ship placing func
+            return
         }
         
-        return true
-    }
-    
-    func sendMessageToPeers(msg: Message) {
-        do {
-            let str = msg.toJson()
-            print(str)
-            let data = str.dataUsingEncoding(NSUTF8StringEncoding,
-                allowLossyConversion: false)
-            try self.session.sendData(data!, toPeers: self.session.connectedPeers,
-                withMode: MCSessionSendDataMode.Unreliable)
-        }catch{
-            // error handling
-        }
-    }
-    
-    func sendMessageToTheOtherField(msg: Message) {
-        recieveMessage(msg, to: FieldView.Side.Enemy)
-    }
-    
-    func browserViewControllerDidFinish(
-        browserViewController: MCBrowserViewController)  {
-            // Called when the browser view controller is dismissed (ie the Done
-            // button was tapped)
-            
-            self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    func browserViewControllerWasCancelled(
-        browserViewController: MCBrowserViewController)  {
-            // Called when the browser view controller is cancelled
-            
-            self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    func session(session: MCSession, didReceiveData data: NSData,
-        fromPeer peerID: MCPeerID)  {
-            
-            
-            dispatch_async(dispatch_get_main_queue()) {
-                
-                print("start getting attacked")
-                
-                let rawStr = String(data: data, encoding: NSUTF8StringEncoding)
-                guard let str = rawStr else {
-                    print("data couldn't be parsed")
-                    return
-                }
-                
-                let rawMsg = Message(json: str)
-                guard let msg = rawMsg else {
-                    print("msg is nil\n\(str)")
-                    return
-                }
-                
-                print(msg.description)
-                self.recieveMessage(msg, to: FieldView.Side.Own)
+        // if my turn
+        if from == FieldView.Side.Enemy {
+            if !self.fields[from.theOther()]!.is_attackable(of) {
+                print("you can't attack there")
+                return // alert you can't attack there
             }
-    }
-    
-    func recieveMessage(msg: Message, to: FieldView.Side){
-        switch msg.type {
-        case .Attack:
-            self.ownFieldView.getAttackedAt(msg.target)
-            self.setAlert("攻撃を受けました。")
-        default:
-            if msg.is_success {
-                self.enemyFieldView.markBurnedAt(msg.target)
-                self.setAlert("攻撃が成功しました。")
-            }else{
-                self.enemyFieldView.markMissedAt(msg.target)
-                self.setAlert("攻撃は失敗しました。")
+            self.fields[from.theOther()]!.getAttackedAt(of)
+            guard let status = self.fields[from.theOther()]!.statusAt(of) else {
+                print("Unexpected Error")
+                return
+            }
+            
+            if status == .attacked_Ship {
+                fieldViews[from]!.markBurnedAt(of)
+                print("Attack Succeeded")
+            } else {
+                fieldViews[from]!.markMissedAt(of)
+                print("Attack Failed")
             }
         }
-    }
-    
-    func setAlert(message:String){
-        let alert:UIAlertController = UIAlertController(title: "警告", message: message, preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {
-            action in
-            // ボタンが押された時の処理
-            print ("pushed")
-        }))
-        self.presentViewController(alert, animated: true, completion: {
-            // 表示完了時の処理
-            print("finished")
-        })
-    }
-    
-    // The following methods do nothing, but the MCSessionDelegate protocol
-    // requires that we implement them.
-    func session(session: MCSession,
-        didStartReceivingResourceWithName resourceName: String,
-        fromPeer peerID: MCPeerID, withProgress progress: NSProgress)  {
-            
-            // Called when a peer starts sending a file to us
-    }
-    
-    func session(session: MCSession,
-        didFinishReceivingResourceWithName resourceName: String,
-        fromPeer peerID: MCPeerID,
-        atURL localURL: NSURL, withError error: NSError?)  {
-            // Called when a file has finished transferring from another peer
-    }
-    
-    func session(session: MCSession, didReceiveStream stream: NSInputStream,
-        withName streamName: String, fromPeer peerID: MCPeerID)  {
-            // Called when a peer establishes a stream with us
-    }
-    
-    func session(session: MCSession, peer peerID: MCPeerID,
-        didChangeState state: MCSessionState)  {
-            // Called when a connected peer changes state (for example, goes offline)
-            
     }
 }

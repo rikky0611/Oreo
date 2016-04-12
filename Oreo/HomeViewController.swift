@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class HomeViewController: UIViewController {
-    
     func showMenu() {
         let button   = UIButton(type: UIButtonType.System) as UIButton
         button.frame = CGRectMake(100, 100, 200, 50)
@@ -31,5 +30,4 @@ class HomeViewController: UIViewController {
         let gameViewController = SingleGameViewController()
         self.presentViewController(gameViewController, animated: true, completion: nil)
     }
-    
 }
